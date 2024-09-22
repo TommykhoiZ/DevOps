@@ -6,7 +6,6 @@ pipeline {
             steps {
                 echo 'Building the application...'
                 // Create a zip artifact of the entire project
-                sh 'apt-get update && apt-get install -y zip'
                 sh 'zip -r build_artifact.zip .'
             }
         }
