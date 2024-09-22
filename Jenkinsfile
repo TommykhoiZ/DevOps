@@ -26,6 +26,13 @@ pipeline {
             steps {
                 echo 'Performing code analysis...'
                 // Example: sh 'sonar-scanner'
+                sh '''
+                docker run --interactive --tty \
+                --env CODECLIMATE_CODE="/var/jenkins_home/workspace/project" \
+                  --volume "$(pwd)":/var/jenkins_home/workspace/project \
+                  --volume /var/run/docker.sock:/var/run/docker.sock \
+                  codeclimate/codeclimate analyze
+                '''
             }
         }
         
