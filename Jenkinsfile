@@ -5,7 +5,8 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building the application...'
-                // Example: sh 'mvn clean install'
+                // Build a Docker image
+                sh 'docker build -t myapp:latest .'
             }
         }
         
