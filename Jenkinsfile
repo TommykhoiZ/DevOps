@@ -38,26 +38,13 @@ pipeline {
             }
         }
         
-        stage('Security Scan') { // Stage 4
-            steps {
-                echo 'Running security scans...' 
-            }
-            post {
-                always {
-                    emailext (
-                        to: 'hoangminhkhoi3108@gmail.com',
-                        subject: "Security Scan Stage: ${currentBuild.fullDisplayName} - ${currentBuild.result}",
-                        body: """<p>The Security Scan stage has completed.</p><p>Status: ${currentBuild.result}</p>""",
-                        attachLog: true
-                    )
-                }
-            }
-        }
-        
         stage('Deploy to Staging') {
             steps {
                 echo 'Deploying to staging environment...'
-                // Example: sh 'scp target/myapp.war user@staging-server:/path/to/deploy'
+                sh '''
+                docker-compose down
+                docker-compose up -d
+                '''
             }
         }
         
