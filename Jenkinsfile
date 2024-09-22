@@ -13,6 +13,8 @@ pipeline {
         stage('Unit and Integration Tests') { // Stage 2
             steps {
                 echo 'Integrating different tests...'
+                // Run pytest with nbval to test Jupyter notebooks
+                sh 'pytest --nbval *.ipynb'
             }
             post {
                 always {
