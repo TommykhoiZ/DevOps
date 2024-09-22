@@ -5,8 +5,8 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building the application...'
-                // Build a Docker image
-                sh 'docker build -t myapp:latest .'
+                // Create a zip artifact of the entire project
+                sh 'zip -r build_artifact.zip .'
             }
         }
         
