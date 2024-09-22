@@ -17,7 +17,7 @@ pipeline {
                 # Activate virtual environment
                 . /var/jenkins_home/workspace/project/venv/bin/activate
                 # Run pytest inside the virtual environment
-                pytest program.py
+                pytest test_program.py
                 '''
             }
         }
