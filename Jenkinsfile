@@ -27,7 +27,7 @@ pipeline {
                 echo 'Running SonarQube analysis for Python...'
         withSonarQubeEnv('My SonarQube') { // Make sure 'My SonarQube' is the name of your SonarQube configuration
             sh '''
-            sonar-scanner \
+            /opt/sonar-scanner/bin/sonar-scanner \
             -Dsonar.projectKey=my-python-project \
             -Dsonar.sources=. \
             -Dsonar.language=py \
