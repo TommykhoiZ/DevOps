@@ -6,7 +6,7 @@ pipeline {
             steps {
                 echo 'Building the application...'
                 // Create a zip artifact of the entire project
-                sh 'zip -r build_artifact.zip .'
+                sh 'docker build -t myapp:latest .'
             }
         }
         
