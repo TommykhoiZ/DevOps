@@ -25,13 +25,9 @@ pipeline {
         stage('Code Analysis') {
             steps {
                 echo 'Running CodeClimate analysis...'
-        sh '''
-        docker run \
-        --env CODECLIMATE_CODE="/var/jenkins_home/workspace/project" \
-        --volume "$(pwd)":/var/jenkins_home/workspace/project \
-        --volume /var/run/docker.sock:/var/run/docker.sock \
-        codeclimate/codeclimate analyze program.py
-        '''
+                withSonarQubeEnv('My SonarQube') {
+                    sh 'sonar-scanner -Dsonar.login=${SONAR_TOKEN}'
+                }
             }
         }
         
