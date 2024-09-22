@@ -14,17 +14,7 @@ pipeline {
             steps {
                 echo 'Integrating different tests...'
                 // Run pytest with nbval to test Jupyter notebooks
-                sh 'pytest --nbval *.ipynb'
-            }
-            post {
-                always {
-                    emailext (
-                        to: 'hoangminhkhoi3108@gmail.com',
-                        subject: "Unit and Integration Tests Stage: ${currentBuild.fullDisplayName} - ${currentBuild.result}",
-                        body: """<p>Integrating Tests stage has completed.</p><p>Status: ${currentBuild.result}</p>""",
-                        attachLog: true
-                    )
-                }
+                sh 'pytest --nbval program.ipynb'
             }
         }
         
