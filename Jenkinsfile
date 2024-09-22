@@ -15,7 +15,7 @@ pipeline {
                 echo 'Integrating different tests...'
                 sh '''
                 # Activate virtual environment
-                sudo su root
+                su root
                 source venv/bin/activate
                 # Run pytest inside the virtual environment
                 pytest program.py
