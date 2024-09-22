@@ -26,7 +26,7 @@ pipeline {
             steps {
                 echo 'Running CodeClimate analysis...'
                 withSonarQubeEnv('My SonarQube') {
-                    sh 'sonar-scanner -Dsonar.login=${SONAR_TOKEN}'
+                    sh './mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar'
                 }
             }
         }
