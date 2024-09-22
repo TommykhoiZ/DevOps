@@ -24,9 +24,16 @@ pipeline {
         
         stage('Code Analysis') {
             steps {
-                echo 'Running CodeClimate analysis...'
-                withSonarQubeEnv('My SonarQube') {
-                    sh './mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar'
+                echo 'Running SonarQube analysis for Python...'
+        withSonarQubeEnv('My SonarQube') { // Make sure 'My SonarQube' is the name of your SonarQube configuration
+            sh '''
+            sonar-scanner \
+            -Dsonar.projectKey=my-python-project \
+            -Dsonar.sources=. \
+            -Dsonar.language=py \
+            -Dsonar.host.url=http://your-sonarqube-server-url \
+            -Dsonar.login=squ_3721826b97039d12d511be94e0ba7f437cedfe53
+            '''
                 }
             }
         }
