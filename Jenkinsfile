@@ -13,8 +13,12 @@ pipeline {
         stage('Unit and Integration Tests') { // Stage 2
             steps {
                 echo 'Integrating different tests...'
-                // Run pytest on the converted Python script
-                sh 'pytest program.py'
+                sh '''
+                # Activate virtual environment
+                source venv/bin/activate
+                # Run pytest inside the virtual environment
+                pytest program.py
+                '''
             }
         }
         
