@@ -15,7 +15,7 @@ pipeline {
                 echo 'Integrating different tests...'
                 sh '''
                 # Activate virtual environment
-                source /var/jenkins_home/workspace/project/venv/bin/activate
+                . /var/jenkins_home/workspace/project/venv/bin/activate
                 # Run pytest inside the virtual environment
                 pytest program.py
                 '''
