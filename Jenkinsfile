@@ -31,7 +31,7 @@ pipeline {
             -Dsonar.projectKey=my-python-project \
             -Dsonar.sources=. \
             -Dsonar.language=py \
-            -Dsonar.host.url=http://your-sonarqube-server-url \
+            -Dsonar.host.url=http://localhost:9000/ \
             -Dsonar.login=squ_3721826b97039d12d511be94e0ba7f437cedfe53
             '''
                 }
