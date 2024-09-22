@@ -15,6 +15,7 @@ pipeline {
                 echo 'Integrating different tests...'
                 sh '''
                 # Activate virtual environment
+                docker exec -u 0 -it gallant_austin bash
                 source venv/bin/activate
                 # Run pytest inside the virtual environment
                 pytest program.py
