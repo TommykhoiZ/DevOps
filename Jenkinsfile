@@ -10,13 +10,6 @@ pipeline {
             }
         }
         
-        stage('Convert Notebooks') {
-            steps {
-                echo 'Converting notebook to Python script...'
-                sh 'jupyter nbconvert --to script program.ipynb'
-            }
-        }
-        
         stage('Unit and Integration Tests') { // Stage 2
             steps {
                 echo 'Integrating different tests...'
