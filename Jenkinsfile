@@ -63,7 +63,7 @@ pipeline {
                  )
             }
         }
-    }
+    }}
     
     post {
         success {
@@ -73,5 +73,4 @@ pipeline {
             echo 'Pipeline failed. Please check the logs.'
         }
     }
- }
 }
