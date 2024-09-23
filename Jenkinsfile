@@ -48,17 +48,19 @@ pipeline {
             }
         }
         
-        stage('Integration Tests on Staging') {
+        stage('Release Stage on Octopus') {
             steps {
                 echo 'Running integration tests on staging...'
-                // Example: sh 'mvn verify -Pstaging'
-            }
-        }
-        
-        stage('Deploy to Production') {
-            steps {
-                echo 'Deploying to production...'
-                // Example: sh 'scp target/myapp.war user@production-server:/path/to/deploy'
+                script {
+                    octopusDeploy(
+                        toolId: 'Octopus',
+                        serverUrl: 'https://tomtum.octopus.app',
+                        apiKey: 'API-A1HGQUKUEBKVFCOFLOB44RRWOUXCRWDE',
+                        project: 'Octopus',
+                        releaseVersion: '1.0.0',
+                        environment: 'Staging',
+                        deployToEnvironments: ['Staging']
+                 )
             }
         }
     }
