@@ -51,7 +51,6 @@ pipeline {
         stage('Release Stage on Octopus') {
             steps {
                 echo 'Running integration tests on staging...'
-                script {
                     octopusDeploy(
                         toolId: 'Octopus',
                         serverUrl: 'https://tomtum.octopus.app',
@@ -61,7 +60,6 @@ pipeline {
                         environment: 'Staging',
                         deployToEnvironments: ['Staging']
                  )
-            }
         }
     }}
     
